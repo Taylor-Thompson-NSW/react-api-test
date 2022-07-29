@@ -19,7 +19,7 @@ router.get("/", async (req, res) => {
 
 //Get One User
 router.get("/:id", getUser, (req, res) => {
-  res.json(res.user);
+  res.status(201).json(res.user);
 });
 
 //Creating one user
@@ -31,7 +31,8 @@ router.post("/", async (req, res) => {
   try {
     //try to save the user, and return the response as json
     user.save();
-    res.status(201).json(user);
+    res.status(201);
+    //.json(user);
   } catch (err) {
     res.status(400).json({ message: err.message });
   }
@@ -73,16 +74,22 @@ async function getUser(req, res, next) {
     //finds userByID if it can and sets the user as well if it can
     user = await User.findById(req.params.id);
     //if not then return 404
-    if (user == null) {
+    if (user === null) {
       return res.status(404).json({ message: "Cannot Find User" });
     }
   } catch (err) {
-    res.status(500).json({ message: err.message });
+    return res.status(500).json({ message: err.message });
+  }
+
+  try {
+    res.user = user;
+    next();
+ 
+  } catch(err) {
+    return console.log(err.message)
   }
 
   //sets the user in the call to the user we findByID here
-  res.user = user;
-  next();
 }
 
 module.exports = router;

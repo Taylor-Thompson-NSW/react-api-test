@@ -1,11 +1,13 @@
 import "./App.css";
 import Users from "./components/Users.js";
 
+import UsersFunctional from "./components/UsersFunctional.js";
+import UserInput from "./components/UserInput.js"
+
 function App() {
   return (
-    <Users>
-      <h1>hi</h1>
-    </Users>
+      <UsersFunctional />
+
   );
 }
 

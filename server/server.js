@@ -9,7 +9,7 @@ const mongoose = require("mongoose");
 const app = express();
 
 //listen on 3000 and log that the connection was successful
-app.listen(1234, () => console.log("server started!"));
+app.listen(2234, () => console.log("server started!"));
 
 //connect to our mongodb users database
 mongoose.connect(process.env.DATABASE_URL);

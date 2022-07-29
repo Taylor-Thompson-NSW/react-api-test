@@ -26,7 +26,7 @@ class Users extends Component {
   }
 
   render() {
-    //Decided to make this a div with the entire list in it, then
+    //Decided to make this a unordered list with list items, then
     //we use the map method to map from our array of JSON data.
     return (
       <ul>
