@@ -18,7 +18,6 @@ export default function UsersFunctional() {
     getUsers();
   });
 
-
   const newUserSchema = {
     name: name,
     age: age,
@@ -39,6 +38,8 @@ export default function UsersFunctional() {
       .then((data) => console.log(data))
       .then((err) => console.log(err));
   };
+
+  //TODO Create PATCH functionality
 
   return (
     <>
