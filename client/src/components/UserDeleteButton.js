@@ -1,13 +1,8 @@
-function UserDeleteButton({id, deleteUser}) {
-
+function UserDeleteButton({ id, deleteUser }) {
   return (
-      <button
-        className="btn"
-        type="button"
-        onClick={() => deleteUser(id)}
-      >
-        Delete User
-      </button>
+    <button className="btn" type="button" onClick={() => deleteUser(id)}>
+      Delete User
+    </button>
   );
 }
 

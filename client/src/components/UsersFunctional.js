@@ -7,6 +7,7 @@ export default function UsersFunctional() {
   const [users, setUsers] = useState([]);
   const [name, setName] = useState("");
   const [age, setAge] = useState("");
+  const [modalIsOpen, setModalOpen] = useState(false);
 
   async function getUsers() {
     await fetch("/users")
@@ -39,11 +40,28 @@ export default function UsersFunctional() {
       .then((err) => console.log(err));
   };
 
+  function modalOpen() {
+    if (!modalIsOpen) {
+      setModalOpen(true);
+    }
+  }
+  function modalClose() {
+    if (modalIsOpen) {
+      setModalOpen(false);
+    }
+  }
+
   //TODO Create PATCH functionality
 
   return (
     <>
-      <UsersList users={users} deleteUser={(id) => deleteUser(id)}></UsersList>
+      <UsersList
+        users={users}
+        deleteUser={(id) => deleteUser(id)}
+        modalIsOpen={modalIsOpen}
+        modalOpen={modalOpen}
+        modalClose={modalClose}
+      ></UsersList>
       <UserInput
         name={name}
         setName={setName}
