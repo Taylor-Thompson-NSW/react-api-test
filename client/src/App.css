@@ -40,3 +40,7 @@
 .btn {
   z-index: 0 !important;
 }
+
+.containerPadding {
+  padding: "15px";
+}
