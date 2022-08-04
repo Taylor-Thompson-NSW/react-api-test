@@ -3,6 +3,8 @@ import { useState, useEffect } from "react";
 import UserInput from "./UserInput.js";
 import UsersList from "./UsersList.js";
 
+//TODO - MAJOR REFACTOR: THIS MAYBE BECOMES App.js AND WE REDESIGN COMPONENTS
+//TO HAVE SUBSTANTIALLY LESS PROP DRILLING! :)
 export default function UsersFunctional() {
   const [users, setUsers] = useState([]);
   const [name, setName] = useState("");
@@ -13,21 +15,18 @@ export default function UsersFunctional() {
   const [newName, setNewName] = useState("");
   const [newAge, setNewAge] = useState("");
 
-  async function getUsers() {
-    try {
-      await fetch("/users")
-        .then((response) => response.json())
-        .then((users) => setUsers(users));
-    } catch (err) {
-      console.log(err.message);
-    }
-  }
+//  async function getUsers() {
+//    try {
+//      await fetch("/users")
+//        .then((response) => response.json())
+//        .then((users) => setUsers(users));
+//    } catch (err) {
+//      console.log(err.message);
+//    }
+//  }
 
   //TODO figure out this fetch infinte loop stuff. for now 
   //just giving it an empty dependency array so it loads once only. 
-  useEffect(() => {
-    getUsers();
-  }, []);
 
   const newUserSchema = {
     name: name,
@@ -104,6 +103,7 @@ export default function UsersFunctional() {
         newAge={newAge}
         setNewAge={setNewAge}
         users={users}
+        setUsers={setUsers}
         deleteUser={(id) => deleteUser(id)}
         updateUser={(id) => updateUser(id)}
         modalIsOpen={modalIsOpen}

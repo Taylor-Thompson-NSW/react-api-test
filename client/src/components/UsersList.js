@@ -1,3 +1,4 @@
+import {useCallback, useEffect} from "react";
 import UserDeleteButton from "./UserDeleteButton.js";
 import UserListItems from "./UserListItems.js";
 export default function UsersList({
@@ -10,6 +11,7 @@ export default function UsersList({
   newAge,
   setNewAge,
   users,
+  setUsers,
   deleteUser,
   updateUser,
   modalIsOpen,
@@ -17,10 +19,22 @@ export default function UsersList({
   modalClose,
 }) {
 
+  const getUsers = useCallback(async () => {
+    try {
+      await fetch("/users")
+        .then((response) => response.json())
+        .then((users) => setUsers(users));
+    } catch (err) {
+      console.log(err.message);
+    }
+  }, [setUsers]);
 
+  useEffect(() => {
+    getUsers();
+  }, [getUsers]);
 
   return (
-    <div className="container containerPadding" >
+    <div className="container containerPadding">
       {users.map((user) => {
         return (
           <div>
@@ -36,6 +50,7 @@ export default function UsersList({
                 newAge={newAge}
                 setNewAge={setNewAge}
                 users={users}
+                setUsers={setUsers}
                 deleteUser={deleteUser}
                 updateUser={updateUser}
                 modalIsOpen={modalIsOpen}
