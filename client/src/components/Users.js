@@ -1,4 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
+import { ListGroup } from "react-bootstrap";
+import { LinkContainer } from "react-router-bootstrap";
 import { getUsers } from "../api/usersApi";
 
 export default function Users() {
@@ -14,11 +16,13 @@ export default function Users() {
     users.data.map((user) => {
       const userData = user;
       return (
-        <ul>
-          <li className="h4">Name: {userData.name}</li>
-          <li className="h4">Age: {userData.age}</li>
-          
-        </ul>
+        <ListGroup>
+          <LinkContainer to={`/users/${user._id}`}>
+            <ListGroup.Item action href="">
+              {userData.name}
+            </ListGroup.Item>
+          </LinkContainer>
+        </ListGroup>
       );
     })
   );

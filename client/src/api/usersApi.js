@@ -8,6 +8,11 @@ export const getUsers = async () => {
   return response.data;
 };
 
+export const getUser = async (id) => {
+  const response = await axios.get(`/users/${id}`);
+  return response.data;
+};
+
 export const deleteUser = async (id) => {
   return await axios.delete(`/users/${id}`);
 };

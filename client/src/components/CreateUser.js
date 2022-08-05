@@ -1,8 +1,8 @@
-import { useMutation } from "@tanstack/react-query";
-import { createUser } from "../api/usersApi";
-import { useState } from "react";
+import {useMutation} from "@tanstack/react-query";
+import {useState} from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import {createUser} from "../api/usersApi";
 
 export default function CreateUser() {
   const [name, setName] = useState("");
