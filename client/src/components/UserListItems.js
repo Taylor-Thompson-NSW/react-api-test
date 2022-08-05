@@ -1,4 +1,3 @@
-import {useCallback, useEffect} from "react";
 import UserDeleteButton from "./UserDeleteButton.js";
 import UserEditModal from "./UserEditModal.js";
 export default function UserListItems({
@@ -19,25 +18,7 @@ export default function UserListItems({
   modalOpen,
   modalClose,
 }) {
-
-
-  const getUsers = useCallback(async () => {
-    try {
-      await fetch("/users")
-        .then((response) => response.json())
-        .then((users) => setUsers(users));
-    } catch (err) {
-      console.log(err.message);
-    }
-  }, [setUsers])
-
-  useEffect(() => {
-
-
-    getUsers();
-  }, [getUsers]);
   return (
-
     <ul>
       <li class="h4">Name: {user.name}</li>
       <li class="h4">Age: {user.age}</li>
