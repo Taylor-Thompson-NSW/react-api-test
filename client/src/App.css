@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+
 }
 
 .App-logo {
@@ -41,6 +42,11 @@
   z-index: 0 !important;
 }
 
-.containerPadding {
-  padding: "15px";
+.page-title {
+  padding-top: 25px !important;
+}
+
+body {
+
+  background-color: var(--bs-gray-200) !important;
 }

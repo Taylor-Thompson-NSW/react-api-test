@@ -21,7 +21,7 @@ function App() {
         <Routes>
           <Route path="/" element={<NavigationBar />}>
             <Route path="users" element={<Users />} />
-            {/*<Route path="users/create" element={<CreateUser />} /> */}
+            <Route path="users/create" element={<CreateUser />} />
           </Route>
         </Routes>
       </Router>

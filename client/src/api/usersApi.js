@@ -1,7 +1,7 @@
 import axios from "axios";
 
-export const createUser = (id, newUserSchema) => {
-  return axios.create(`/users/${id}`, newUserSchema);
+export const createUser = (newUserSchema) => {
+  return axios.post(`/users/`, newUserSchema);
 };
 export const getUsers = async () => {
   const response = await axios.get("/users");

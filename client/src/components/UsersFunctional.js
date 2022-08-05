@@ -15,18 +15,18 @@ export default function UsersFunctional() {
   const [newName, setNewName] = useState("");
   const [newAge, setNewAge] = useState("");
 
-//  async function getUsers() {
-//    try {
-//      await fetch("/users")
-//        .then((response) => response.json())
-//        .then((users) => setUsers(users));
-//    } catch (err) {
-//      console.log(err.message);
-//    }
-//  }
+  //  async function getUsers() {
+  //    try {
+  //      await fetch("/users")
+  //        .then((response) => response.json())
+  //        .then((users) => setUsers(users));
+  //    } catch (err) {
+  //      console.log(err.message);
+  //    }
+  //  }
 
-  //TODO figure out this fetch infinte loop stuff. for now 
-  //just giving it an empty dependency array so it loads once only. 
+  //TODO figure out this fetch infinte loop stuff. for now
+  //just giving it an empty dependency array so it loads once only.
 
   const newUserSchema = {
     name: name,
@@ -37,7 +37,7 @@ export default function UsersFunctional() {
     name: newName,
     age: newAge,
   };
-  
+
   //TODO figure out how to have my list re-render on update
 
   const createUser = async () => {
@@ -64,7 +64,6 @@ export default function UsersFunctional() {
     }
   };
 
-  
   const updateUser = async (id) => {
     try {
       fetch(`/users/${id}`, {
