@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { getUsers } from "../api/getUsers";
+import { getUsers } from "../api/usersApi";
 
 export default function Users() {
   const users = useQuery(["users"], getUsers);
@@ -15,8 +15,8 @@ export default function Users() {
       const userData = user;
       return (
         <ul>
-          <li class="h4">Name: {userData.name}</li>
-          <li class="h4">Age: {userData.age}</li>
+          <li className="h4">Name: {userData.name}</li>
+          <li className="h4">Age: {userData.age}</li>
         </ul>
       );
     })

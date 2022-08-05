@@ -8,13 +8,10 @@ import "./index.css";
 import "bootstrap/dist/css/bootstrap.css";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import {
-  useQueryClient,
-  QueryClient,
-  QueryClientProvider,
-} from "@tanstack/react-query";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import Users from "./components/Users";
 import NavigationBar from "./components/NavigationBar";
+import CreateUser from "./components/CreateUser";
 
 function App() {
   const queryClient = new QueryClient();
@@ -24,6 +21,7 @@ function App() {
         <Routes>
           <Route path="/" element={<NavigationBar />}>
             <Route path="users" element={<Users />} />
+            {/*<Route path="users/create" element={<CreateUser />} /> */}
           </Route>
         </Routes>
       </Router>
