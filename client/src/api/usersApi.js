@@ -18,5 +18,5 @@ export const deleteUser = async (id) => {
 };
 
 export const updateUser = async (id, editUserSchema) => {
-  return await axios.patch(`/users/${id}`, editUserSchema);
+  return await axios.put(`/users/${id}`, editUserSchema);
 };

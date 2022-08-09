@@ -14,12 +14,11 @@ export default function Users() {
     </div>
   ) : (
     users.data.map((user) => {
-      const userData = user;
       return (
         <ListGroup>
           <LinkContainer to={`/users/${user._id}`}>
             <ListGroup.Item action href="">
-              {userData.name}
+              {user.name}
             </ListGroup.Item>
           </LinkContainer>
         </ListGroup>

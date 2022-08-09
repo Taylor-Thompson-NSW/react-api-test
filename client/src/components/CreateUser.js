@@ -1,8 +1,8 @@
-import {useMutation} from "@tanstack/react-query";
-import {useState} from "react";
+import { useMutation } from "@tanstack/react-query";
+import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import {createUser} from "../api/usersApi";
+import { createUser } from "../api/usersApi";
 
 export default function CreateUser() {
   const [name, setName] = useState("");
@@ -20,26 +20,41 @@ export default function CreateUser() {
   const handleSubmit = (e) => {
     e.preventDefault();
     mutation.mutate(newUserSchema);
-  }
+  };
 
   return (
-    <div className="container">
-      <Form onSubmit={handleSubmit}>
-        <Form.Group className="mb-3" controlId="formName">
-          <Form.Label>Name</Form.Label>
-          <Form.Control type="name" placeholder="Enter Name" value={name} onChange={(e) => setName(e.target.value)}/>
-        </Form.Group>
+    <>
+      <div className="container">
+        <Form onSubmit={handleSubmit}>
+          <Form.Group className="mb-3" controlId="formName">
+            <Form.Label>Name</Form.Label>
+            <Form.Control
+              type="name"
+              placeholder="Enter Name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
+          </Form.Group>
 
-        <Form.Group className="mb-3" controlId="formAge">
-          <Form.Label>Age</Form.Label>
-          <Form.Control type="age" placeholder="Age" value={age} onChange={(e) => setAge(e.target.value)}/>
-        </Form.Group>
-        <Button
-          type="submit"
-        >
-          Submit
-        </Button>
-      </Form>
-    </div>
+          <Form.Group className="mb-3" controlId="formAge">
+            <Form.Label>Age</Form.Label>
+            <Form.Control
+              type="age"
+              placeholder="Age"
+              value={age}
+              onChange={(e) => setAge(e.target.value)}
+            />
+          </Form.Group>
+          <Button type="submit">Submit</Button>
+        </Form>
+
+      </div>
+
+      {mutation.isSuccess ? <h3>User Created!</h3> : null}
+      {mutation.isError ? (
+        <h3>An error occurred: {mutation.error.message}</h3>
+      ) : null}
+      {mutation.isLoading ? <h3>Creating User...</h3> : null}
+    </>
   );
 }

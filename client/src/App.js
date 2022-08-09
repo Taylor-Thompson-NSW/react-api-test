@@ -6,6 +6,7 @@ import CreateUser from "./components/CreateUser";
 import NavigationBar from "./components/NavigationBar";
 import UserDetail from "./components/UserDetail";
 import Users from "./components/Users";
+import UserEdit from "./components/UserEdit"
 import "./index.css";
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
             <Route path="users" element={<Users />} />
             <Route path="users/create" element={<CreateUser />} />
             <Route path={"users/:id"} element={<UserDetail />} />
+            <Route path={"users/:id/edit"} element={<UserEdit />} />
           </Route>
         </Routes>
       </Router>
