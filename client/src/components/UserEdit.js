@@ -24,12 +24,12 @@ export default function UserEdit() {
   };
 
   const mutation = useMutation((editUserSchema) => {
-    updateUser(id, editUserSchema);
+    return updateUser(id, editUserSchema);
   });
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    mutation.mutate(editUserSchema, id);
+    mutation.mutate(editUserSchema);
   };
 
   return (
