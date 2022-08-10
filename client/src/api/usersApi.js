@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const createUser = (newUserSchema) => {
-  return axios.post(`/users/`, newUserSchema);
+  return axios.post(`/users`, newUserSchema);
 };
 export const getUsers = async () => {
   const response = await axios.get("/users");
@@ -13,10 +13,10 @@ export const getUser = async (id) => {
   return response.data;
 };
 
-export const deleteUser = async (id) => {
-  return await axios.delete(`/users/${id}`);
+export const updateUser = async (id, editUserSchema) => {
+  return await axios.patch(`/users/${id}`, editUserSchema);
 };
 
-export const updateUser = async (id, editUserSchema) => {
-  return await axios.put(`/users/${id}`, editUserSchema);
+export const deleteUser = async (id) => {
+  return await axios.delete(`/users/${id}`);
 };

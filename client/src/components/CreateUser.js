@@ -47,7 +47,6 @@ export default function CreateUser() {
           </Form.Group>
           <Button type="submit">Submit</Button>
         </Form>
-
       </div>
 
       {mutation.isSuccess ? <h3>User Created!</h3> : null}
