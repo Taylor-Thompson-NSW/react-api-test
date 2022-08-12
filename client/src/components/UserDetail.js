@@ -1,12 +1,10 @@
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { Button } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
-import { useParams, Navigate, useNavigate } from "react-router-dom";
-import { getUser, deleteUser } from "../api/usersApi";
+import { Navigate, useParams } from "react-router-dom";
+import { deleteUser, getUser } from "../api/usersApi";
 
 export default function UserDetail() {
-  const navigate = useNavigate;
-
   const { id } = useParams();
   const user = useQuery(["user", id], () => getUser(id));
   console.log(user);
