@@ -7,19 +7,26 @@ import { createUser } from "../api/usersApi";
 export default function CreateUser() {
   const [name, setName] = useState("");
   const [age, setAge] = useState("");
+  const [newUser, setNewUser] = useState({});
 
-  const newUserSchema = {
-    name: name,
-    age: age,
-  };
+  // const newUserSchema = {
+  //   name: name,
+  //   age: age,
+  // };
 
-  const mutation = useMutation((newUserSchema) => {
-    return createUser(newUserSchema);
+  const mutation = useMutation((newUser) => {
+    return createUser(newUser);
   });
 
+  const onClickUpdateUser = () => {
+    setNewUser(prev => ({...prev, name:name, age:age}));
+
+  }
+
   const handleSubmit = (e) => {
+    console.log(newUser)
+    mutation.mutate(newUser);
     e.preventDefault();
-    mutation.mutate(newUserSchema);
   };
 
   return (
@@ -45,7 +52,7 @@ export default function CreateUser() {
               onChange={(e) => setAge(e.target.value)}
             />
           </Form.Group>
-          <Button type="submit">Submit</Button>
+          <Button type="submit" onClick={onClickUpdateUser}>Submit</Button>
         </Form>
       </div>
 
