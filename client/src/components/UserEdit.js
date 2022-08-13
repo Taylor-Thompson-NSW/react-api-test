@@ -1,13 +1,14 @@
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { useState } from "react";
-import { Navigate, useParams } from "react-router-dom";
-import { getUser, updateUser } from "../api/usersApi";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import { useParams } from "react-router-dom";
+import { getUser, updateUser } from "../api/usersApi";
 
 export default function UserEdit() {
   const [currentName, setCurrentName] = useState("");
   const [currentAge, setCurrentAge] = useState("");
+  const [currentUser, setCurrentUser] = useState({});
 
   const { id } = useParams();
 
@@ -18,18 +19,17 @@ export default function UserEdit() {
     setCurrentAge(userData.age);
   });
 
-  const editUserSchema = {
-    name: currentName,
-    age: currentAge,
+  const updateCurrentUser = () => {
+    setCurrentUser((prev) => ({ ...prev, name: currentName, age: currentAge }));
   };
 
-  const mutation = useMutation((editUserSchema) => {
-    return updateUser(id, editUserSchema);
+  const mutation = useMutation((currentUser) => {
+    return updateUser(id, currentUser);
   });
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    mutation.mutate(editUserSchema);
+    mutation.mutate(currentUser);
   };
 
   return (
@@ -54,12 +54,14 @@ export default function UserEdit() {
             onChange={(e) => setCurrentAge(e.target.value)}
           />
         </Form.Group>
-        <Button type="submit">Submit</Button>
+        <Button type="submit" onClick={updateCurrentUser}>
+          Submit
+        </Button>
       </Form>
 
       {mutation.isSuccess ? (
         <div>
-        <br />
+          <br />
           <h3>User Updated!</h3>
         </div>
       ) : null}

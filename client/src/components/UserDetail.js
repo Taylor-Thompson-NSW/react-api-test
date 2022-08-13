@@ -33,10 +33,17 @@ export default function UserDetail() {
       </LinkContainer>
       <Button onClick={handleClickForDelete}>Delete user</Button>
       {mutation.isSuccess ? (
-        <div>
+        <>
           <h3>User Deleted!</h3>
-          <Navigate to="/users" />
+          <div>
+
+          <LinkContainer to={`/users`}>
+            <Button type="button">
+              All Users
+            </Button>
+          </LinkContainer>
         </div>
+        </>
       ) : null}
       {mutation.isError ? (
         <h3>An error occurred: {mutation.error.message}</h3>
