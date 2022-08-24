@@ -2,6 +2,7 @@ import { useMutation, useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import {LinkContainer} from "react-router-bootstrap";
 import { useParams } from "react-router-dom";
 import { getUser, updateUser } from "../api/usersApi";
 
@@ -60,10 +61,14 @@ export default function UserEdit() {
       </Form>
 
       {mutation.isSuccess ? (
-        <div>
-          <br />
+        <>
           <h3>User Updated!</h3>
-        </div>
+          <div>
+            <LinkContainer to={`/users`}>
+              <Button type="button">All Users</Button>
+            </LinkContainer>
+          </div>
+        </>
       ) : null}
       {mutation.isError ? (
         <h3>An error occurred: {mutation.error.message}</h3>
