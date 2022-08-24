@@ -1,7 +1,7 @@
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { Button } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
-import { Navigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { deleteUser, getUser } from "../api/usersApi";
 
 export default function UserDetail() {
@@ -36,13 +36,10 @@ export default function UserDetail() {
         <>
           <h3>User Deleted!</h3>
           <div>
-
-          <LinkContainer to={`/users`}>
-            <Button type="button">
-              All Users
-            </Button>
-          </LinkContainer>
-        </div>
+            <LinkContainer to={`/users`}>
+              <Button type="button">All Users</Button>
+            </LinkContainer>
+          </div>
         </>
       ) : null}
       {mutation.isError ? (

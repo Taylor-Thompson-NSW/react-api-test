@@ -9,11 +9,6 @@ export default function CreateUser() {
   const [age, setAge] = useState("");
   const [newUser, setNewUser] = useState({});
 
-  // const newUserSchema = {
-  //   name: name,
-  //   age: age,
-  // };
-
   const mutation = useMutation((newUser) => {
     return createUser(newUser);
   });
@@ -55,6 +50,8 @@ export default function CreateUser() {
           <Button type="submit" onClick={onClickUpdateUser}>Submit</Button>
         </Form>
       </div>
+
+      {/* TODO: Fix mutation from hanging on isLoading "Creating User..." */}
 
       {mutation.isSuccess ? <h3>User Created!</h3> : null}
       {mutation.isError ? (
